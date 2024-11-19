@@ -2,6 +2,10 @@
  *    Instrucciones:
  *   Dado un arreglo de tamaño N, dividirlo en partes iguales entre los procesos. Cada proceso calcula la suma de su segmento y utiliza MPI para obtener la suma total en el proceso raíz.
  *
+ * Comandos de ejecución:
+ * mpicc archivo.c -o  archivo
+ * mpirun -np <n_proces> archivo
+ *
  */
 #include <mpi.h>
 #include <stdio.h>
