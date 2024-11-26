@@ -1,0 +1,9 @@
+Comandos de ejecución cuando se usa mpi:
+
+- mpicc archivo.c -o archivo
+- mpirun -np <n_proces> archivo
+
+Comandos de ejecución cuando no se usa mpi:
+
+- gcc nombre_archivo.c -o nombre_compilado
+- ./nombre_compilado
