@@ -1,0 +1,33 @@
+        -:    0:Source:calva.c
+        -:    0:Graph:calva.gcno
+        -:    0:Data:calva.gcda
+        -:    0:Runs:6
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:
+        6:    4:int main(int argc, char *argv[]){
+        -:    5:    double *A, total;
+        -:    6:    int i, j, k, N;
+        -:    7:
+        6:    8:    N = atoi(argv[1]);
+        6:    9:    A = (double *) malloc (sizeof(double) * N * N);
+        -:   10:
+     1136:   11:    for (i = 0; i < N; i++){
+   511430:   12:        for (j = 0; j < N; j++)
+   510300:   13:            A[i * N  + j] = 1;
+        -:   14:    }
+        -:   15:
+     1136:   16:    for (i = 0; i < N; i++){
+   511430:   17:        for (j = 0; j < N; j++){
+   510300:   18:            total = 0;
+126266950:   19:            for (k = j; k < N; k++)
+125756650:   20:                  total += A[j * N + k];
+   510300:   21:            A[i * N + j] = total;
+        -:   22:        }
+        -:   23:    }
+        6:   24:	free(A);
+        6:   25:    return 0;
+        -:   26:}
+        -:   27:
+        -:   28:
+        -:   29:
