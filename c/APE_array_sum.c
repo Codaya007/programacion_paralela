@@ -12,6 +12,7 @@
 
 int main(int argc, char **argv)
 {
+    double t, t_final;
     //! Declaración e inicialización
     int rank, size, local_sum = 0, global_sum = 0;
     int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Arreglo de 10 elementos
@@ -20,6 +21,7 @@ int main(int argc, char **argv)
     MPI_Init(&argc, &argv);               // Inicializar MPI
     MPI_Comm_rank(MPI_COMM_WORLD, &rank); // Obtener el rango del proceso
     MPI_Comm_size(MPI_COMM_WORLD, &size); // Obtener el tamaño del comunicador
+    t = MPI_Wtime();
 
     //! Sumas parciales
     // Calcular cuántos elementos le corresponden a cada proceso
@@ -46,6 +48,10 @@ int main(int argc, char **argv)
     {
         printf("La suma total es %d\n", global_sum);
     }
+
+    t_final = MPI_Wtime();
+
+    printf("Tiempo transcurrido: %f segundos\n", t_final - t);
 
     MPI_Finalize(); // Finalizo MPI
     return 0;

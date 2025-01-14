@@ -42,6 +42,7 @@ void gauss_jordan(int rank, int size, double matrix[N][N + 1])
 int main(int argc, char **argv)
 {
     int rank, size;
+    double t, t_final;
     double matrix[N][N + 1] = {
         {1, 3, -1, 6},
         {2, -1, 3, 3},
@@ -50,6 +51,8 @@ int main(int argc, char **argv)
     MPI_Init(&argc, &argv);               // Inicializar MPI
     MPI_Comm_rank(MPI_COMM_WORLD, &rank); // Obtener el rango del proceso
     MPI_Comm_size(MPI_COMM_WORLD, &size); // Obtener el tamaño del comunicador
+
+    t = MPI_Wtime();
 
     // Realizar la eliminación de Gauss-Jordan en paralelo
     gauss_jordan(rank, size, matrix);
@@ -75,6 +78,10 @@ int main(int argc, char **argv)
         }
         printf("\n");
     }
+
+    t_final = MPI_Wtime();
+
+    printf("Tiempo transcurrido proceso %i: %f segundos\n", rank, (t_final - t));
 
     MPI_Finalize(); // Finalizo MPI
     return 0;
