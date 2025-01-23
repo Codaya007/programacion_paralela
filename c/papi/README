@@ -1,0 +1,12 @@
+### Para realizar un análisis con la herramienta PAPI:
+
+```
+gcc miprograma.c -o miprograma -l papi -static
+```
+
+gcc -o papi-test papi-test.c -Wl,-rpath /usr/local/lib -lpapi
+./papi-test
+
+## Output:
+
+PAPI version is 7.2
